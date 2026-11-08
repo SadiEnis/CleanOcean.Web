@@ -1,0 +1,60 @@
+name: Publish CleanOceans
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Verify static export
+        run: |
+          test -f out/index.html
+          test -f out/en/index.html
+          test -f out/teknik/index.html
+          test -f out/iletisim/index.html
+          test -f out/en/technical/index.html
+          test -f out/en/contact/index.html
+          test -f out/CNAME
+          test -f out/media/rescue.webp
+          test -f out/media/cleanoceans-logo.png
+          test -f out/media/sdg-14.png
+          test -f out/media/sdg-17.png
+          test -f out/robots.txt
+          test -f out/sitemap.xml
+          test "$(cat out/CNAME)" = "oceanclean.com.tr"
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: out
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
