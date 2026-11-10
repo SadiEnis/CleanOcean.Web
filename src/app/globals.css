@@ -54,3 +54,24 @@ html{scroll-padding-top:88px}
 .brand .brand-logo{width:40px;height:40px;object-fit:contain;flex-shrink:0;border-radius:50%}
 .footer .brand .brand-logo{width:34px;height:34px}
 @media(max-width:760px){.header .brand .brand-logo{width:34px;height:34px}}
+/* COP31 project showcase */
+.cop31{background:#fff;border-bottom:1px solid var(--line)}
+.cop31-inner{display:grid;grid-template-columns:210px minmax(0,1fr) 230px;align-items:center;gap:42px;padding-top:52px;padding-bottom:52px}
+.cop31-logo{padding:24px 0}
+.cop31-logo img{width:100%;height:auto;object-fit:contain}
+.cop31-copy{border-left:1px solid var(--line);padding-left:34px}
+.cop31-copy .eyebrow{font-size:10px;letter-spacing:1.6px;color:#277464;margin-bottom:14px}
+.cop31-copy h2{font-size:clamp(26px,2.5vw,35px);letter-spacing:-1.2px;margin:0 0 15px;line-height:1.2}
+.cop31-copy>p:last-child{font-size:14px;line-height:1.8;color:var(--muted);margin:0;max-width:480px}
+.cop31-schedule{background:#f1f5ef;border:1px solid #dfe8dd;border-radius:5px;padding:22px 24px}
+.cop31-schedule dl{display:grid;grid-template-columns:1.2fr 1fr;gap:20px 18px;margin:0}
+.cop31-schedule dt{font-size:9px;font-weight:700;letter-spacing:1.5px;color:#62766c;margin-bottom:8px}
+.cop31-schedule dd{margin:0;font-size:32px;line-height:1;font-weight:500;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.cop31-date{grid-column:1/-1;border-bottom:1px solid #d5e0d3;padding-bottom:18px}
+.cop31-date dd{font-size:19px;letter-spacing:-.4px;line-height:1.3}
+.cop31-screen{border-left:1px solid #d5e0d3;padding-left:20px}
+.cop31-screen dd{color:#277464}
+.cop31-schedule>p{font-size:10px;color:#62766c;margin:18px 0 0;line-height:1.4}
+@media(min-width:761px) and (max-width:1100px){.cop31-inner{grid-template-columns:150px minmax(0,1fr) 195px;gap:24px}.cop31-copy{padding-left:24px}.cop31-schedule{padding:20px 17px}.cop31-copy h2{font-size:28px}}
+@media(max-width:760px){.cop31-inner{grid-template-columns:1fr;gap:28px;padding:38px 24px}.cop31-logo{padding:0;width:190px}.cop31-copy{border-left:0;padding-left:0}.cop31-copy h2{font-size:30px}.cop31-copy>p:last-child{max-width:none}.cop31-schedule{padding:22px}.cop31-schedule dl{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,.65fr);gap:14px;align-items:start}.cop31-date{grid-column:auto;border-bottom:0;padding-bottom:0}.cop31-date dd{font-size:17px}.cop31-schedule dd{line-height:1.15}.cop31-schedule dt{font-size:8px;letter-spacing:1px}.cop31-screen{padding-left:14px}.cop31-schedule>p{margin-top:16px}}
+@media(max-width:360px){.cop31-schedule dl{grid-template-columns:1fr 1fr}.cop31-date{grid-column:1/-1;border-bottom:1px solid #d5e0d3;padding-bottom:16px}}

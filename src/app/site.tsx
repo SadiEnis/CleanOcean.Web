@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { content, project, type Language } from './content';
 import HeaderBehavior from './header-behavior';
+import Cop31 from './cop31';
 
 export type PageKind = 'home' | 'technical' | 'contact';
 export const routes = { tr: { home: '/', technical: '/teknik/', contact: '/iletisim/' }, en: { home: '/en/', technical: '/en/technical/', contact: '/en/contact/' } };
@@ -31,6 +32,7 @@ export default function Site({ lang }: { lang: Language }) {
         <div className="hero-art"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="image-frame"><img src="/media/rescue.webp" alt={t.imageAlt} width="1916" height="1080" fetchPriority="high"/></div></div>
         <a className="dive" href="#project"><span>↓</span>{t.scroll}</a>
       </section>
+      <Cop31 lang={lang}/>
       <section className="section problem" id="project" aria-labelledby="problem-title"><div><p className="eyebrow">{t.problemLabel}</p><h2 id="problem-title">{t.problemTitle}</h2><p>{t.problem}</p><p className="muted">{t.purpose}</p></div><aside className="manifesto"><span className="water-icon">≈</span><h3>{t.aside}</h3><p>{t.asideNote}</p><span className="manifesto-bottom">CLEANOCEANS <span>↗</span></span></aside></section>
       <section className="gameplay section" id="gameplay" aria-labelledby="gameplay-title"><div className="section-heading"><div><p className="eyebrow">{t.gameplayLabel}</p><h2 id="gameplay-title">{t.gameplayTitle}</h2></div><p>{t.gameplayIntro}</p></div>
         {project.gameplayVideo ? <video className="game-video" controls preload="metadata" poster="/media/rescue.webp" aria-label={t.videoCta}><source src={project.gameplayVideo} type="video/mp4"/>{t.videoFallback}</video> : <div className="game-gallery"><a href="/media/rescue.webp" target="_blank" rel="noreferrer" aria-label={`${t.fullscreen}: 01`}><img src="/media/rescue.webp" alt={t.imageAlt} width="1916" height="1080" loading="lazy"/><span>{t.mediaLabel} / 01 <b>↗</b></span></a><a href="/media/explore.webp" target="_blank" rel="noreferrer" aria-label={`${t.fullscreen}: 02`}><img src="/media/explore.webp" alt={lang === 'tr' ? 'Geri dönüşüm teknesinin altında denizi keşfeden dalgıç' : 'A diver exploring the sea beneath the recycling boat'} width="1401" height="789" loading="lazy"/><span>{t.mediaLabel} / 02 <b>↗</b></span></a></div>}

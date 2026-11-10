@@ -2,6 +2,7 @@ export const project = {
   name: 'CleanOceans',
   email: 'gucluersadienis@gmail.com',
   linkedin: 'https://www.linkedin.com/in/sadienisgucluer/',
+  website: 'https://sadienis.dev/',
   // Add a local MP4 path, e.g. /media/gameplay.mp4, when the recording is ready.
   gameplayVideo: null as string | null,
 };
