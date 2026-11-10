@@ -46,7 +46,19 @@ Windows PowerShell ortamında aynı komutları `npm.cmd ci`, `npm.cmd run dev` v
 
 Bu yapı özel alan adının kökünde yayın için ayarlanmıştır; `/repo-name/` alt yolunda yayın için basePath ve asset yolları ayrıca uyarlanmalıdır.
 
-## İlk gönderim
+## Cloudflare Web Analytics
+
+Site GitHub Pages üzerinde kalır; DNS veya nameserver değişikliği gerekmez.
+
+1. Cloudflare panelinde **Web Analytics → Add a site** üzerinden `oceanclean.com.tr` ekleyin.
+2. **Manage site** altında verilen JavaScript kodundaki `data-cf-beacon` içindeki `token` değerini alın. Bu, tarayıcıya gönderilen site ölçüm kimliğidir; hesap API anahtarı değildir.
+3. CleanOceans site kimliği entegrasyona eklenmiştir; mevcut kurulum için ek GitHub ayarı gerekmez. Başka bir kimlik kullanmak isterseniz **Settings → Secrets and variables → Actions → Variables → New repository variable** üzerinden `CLOUDFLARE_WEB_ANALYTICS_TOKEN` değişkenini oluşturun.
+4. **Publish CleanOceans** iş akışını tekrar çalıştırın. Değişken statik derleme sırasında kullanılır; sonradan değiştirmek yeniden derleme gerektirir.
+5. Site ziyaretleri sonrası Cloudflare Web Analytics panelindeki sonuçları kontrol edin. Veriler yalnızca entegrasyon yayına alındıktan sonra toplanır; geçmiş ziyaretler alınamaz.
+
+Entegrasyon tüm TR/EN sayfalarda ortaktır, `npm run dev` sırasında kapalıdır. Yerel üretim derlemesinde ortam değişkenini açıkça boş bırakmak script'i kapatır; değişken tanımlanmamışsa projedeki site kimliği kullanılır. Actions boş değişken için mevcut site kimliğine döner. Cloudflare tarafında otomatik script eklemeyi ayrıca etkinleştirmeyin; bu projede elle ekleme kullanılır. Tarayıcı engelleyicileri veya JavaScript'in kapalı olması nedeniyle ölçümler tüm ziyaretleri kapsamayabilir.
+
+## İlk gönderim adımları
 
 GitHub reposu oluşturulduktan sonra, `REPOSITORY_URL` yerine gerçek repo adresini kullanın:
 
